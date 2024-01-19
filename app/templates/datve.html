@@ -1,0 +1,108 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+<h1 class="title">ĐẶT VÉ ONLINE</h1>
+<form  action="{{ url_for('luu_ve') }}" class="form_datve" method="POST">
+    <div class="groupbox_info-datve">
+        <fieldset class="info-datve">
+            <h1 class="title-gb">Thông tin chuyến bay</h1>
+            <div class="datve-tuyenbay none">
+                <label for="" class="lb-title">Mã Chuyến bay: </label>
+                <input type="text" name="id_chuyenbay" class="lb-content disable" value="{{ chuyenbay.id }}" readonly>
+            </div>
+            <div class="datve-tuyenbay">
+                <label for="" class="lb-title">Chuyến bay: </label>
+                <label class="lb-content disable">{{ chuyenbay.ten_chuyen_bay }}</label>
+                <!--                <input type="text" name="chuyenbay" class="lb-content disable" value="{{ chuyenbay.ten_chuyen_bay }}" readonly>-->
+            </div>
+            <div class="datve-sanbay">
+                <div class="datve-sanbaydi">
+                    <label for="" class="lb-title">Sân bay đến: </label>
+                    <label for="" class="lb-content">{{ chuyenbay.san_bay[0] }}</label>
+                </div>
+                <div class="datve-sanbayden">
+                    <label for="" class="lb-title">Sân bay đi: </label>
+                    <label for="" class="lb-content">{{ chuyenbay.san_bay[1] }}</label>
+                </div>
+            </div>
+            {% for s in sbtgs %}
+            <div class="datve-sanbaytg">
+                <div class="datve-sanbaytg--name">
+                    <label for="" class="lb-title">Sân bay trung gian: </label>
+                    <label for="" class="lb-content">{{ s["name"] }}</label>
+                </div>
+                <div class="datve-sanbaytg--time">
+                    <label for="" class="lb-title">Thời gian dừng: </label>
+                    <label for="" class="lb-content">{{ "{:%M}".format(s["time_stop"]) }} phút</label>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="datve-datetime">
+                <div class="datve-datetime--flight">
+                    <label for="" class="lb-title">Ngày giờ bay: </label>
+                    <label for="" class="lb-content">{{ "{:%d-%m-%Y %I:%M %p}".format(chuyenbay.tg_khoihanh) }}</label>
+                </div>
+                <div class="datve-datetime-time">
+                    <label for="" class="lb-title">Thời gian bay: </label>
+                    <label for="" class="lb-content">{{ "{:%H}".format(chuyenbay.tg_bay) }} Tiếng
+                        {% if "{:%M}".format(chuyenbay.tg_bay) != "00" %}
+                        {{ "{:%M}".format(chuyenbay.tg_bay) }} Phút
+                        {% endif %}
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="form-chon_ghe">
+        <div class="form-chon-ghe__hang_ghe">
+            <label class="hangve">Chọn hạng vé: </label>
+            <select onchange="select_Chair({{ chuyenbay.giave_hv1 }}, {{ chuyenbay.giave_hv2 }})" name="hangve" id="hangve" class="chon_hang_ve input">
+                <option value="1">Hạng 1</option>
+                <option value="2">Hạng 2</option>
+            </select>
+        </div>
+        <div class="form-chon-ghe__price">
+            <label class="lb-title">Giá vé: </label>
+            <label id="price" class="lb-price">{{ "{:,.1f}".format(chuyenbay.giave_hv1) }} &#8363</label>
+        </div>
+        <div class="form-chon-ghe__so_ghe">
+            <label class="soghe" style="padding-right:60px">Chọn số ghế: </label>
+            <div id="ghe_1" class="show">
+                <select name="chair_1" class="chon_hang_ve input">
+                    {% for chair in chairs_1 %}
+                    <option value="{{ chair }}">{{ chair }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div  id="ghe_2" class="none">
+                <select name="chair_2" class="chon_hang_ve input" style="display:inline-block">
+                    {% for chair in chairs_2 %}
+                    <option value="{{ chair }}">{{ chair }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-info_customer">
+        <h1 class="message">Hành khách vui lòng nhập đủ thông tin</h1>
+        <div class="input-lable">
+            <div class="customer">
+                <lable class="lb-info">Họ tên hành khách:</lable>
+                <input name="hoten" required class="text" type="text"/>
+            </div>
+            <div class="customer">
+                <lable class="lb-info">Số điện thoại:</lable>
+                <input name="phone" required type="text"/>
+            </div>
+            <div class="customer">
+                <lable class="lb-info">CMND/CCCD:</lable>
+                <input name="cccd" required type="text"/>
+            </div>
+        </div>
+    </div>
+
+    <div class="btn">
+        <input onclick="datve_success()" type="submit" class="btn btn-primary button btn-datve" value="Đặt Vé">
+        <a href="/" class="btn btn-danger button btn-datve">Hủy</a>
+    </div>
+</form>
+{% endblock %}

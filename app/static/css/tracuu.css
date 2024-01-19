@@ -1,0 +1,55 @@
+.form_tracuu
+{
+     text-align: center;
+     margin-top: 80px;
+     margin-bottom: 100px;
+}
+
+.title
+{
+     color: red;
+     margin-bottom: 50px;
+     font-size: 3rem;
+     text-align: center;
+     margin-top: 50px;
+}
+
+.form__body
+{
+     border-radius: 10px;
+     background-color: lightgrey;
+     border-style: solid;
+     border-width: 1px;
+     width: 650px;
+     padding-left: 10px;
+     padding-top: 10px;
+     padding-right: 10px;
+     padding-bottom: 10px;
+     margin: auto;
+     font-size: 16px;
+}
+
+.form__info_sanbay
+{
+     display: flex;
+     justify-content: space-between;
+     padding-bottom: 25px;
+}
+
+.tracuu__time
+{
+     text-align: left;
+}
+
+.from-to
+{
+     margin-top: 10px;
+}
+
+.btn-search
+{
+     display: flex;
+     flex-direction: row-reverse;
+     margin-top: 10px;
+     margin-bottom: 10px;
+}

@@ -1,0 +1,11 @@
+.stat-datetime
+{
+    margin: 20px !important;
+}
+
+.chart
+{
+    margin: 30px;
+    width: 80%;
+    height: 400px;
+}

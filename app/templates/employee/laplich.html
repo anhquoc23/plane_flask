@@ -1,0 +1,99 @@
+{% extends 'admin/master.html' %}
+<link href="{{url_for('static', filename='css/tracuu.css')}}" rel="stylesheet">
+
+{% block body %}
+{% if msg %}
+<div class="alert alert-success">
+    <h3>{{ msg }}</h3>
+</div>
+{% endif %}
+
+{% if err %}
+<div class="alert alert-danger">
+    <h3>{{ err }}</h3>
+</div>
+{% endif %}
+<h1 class="text-center text-info" style="margin:50px 0">Lập Lịch Chuyến Bay</h1>
+
+<form action="{{ url_for('lap_lich_CB') }}" class="laplich" method="POST">
+    <div class="flex body-laplich">
+        <div class="info-sanbay">
+            <lable class="laplich__lb">Sân bay đi: </lable>
+            <select class="input" name="sanbaydi">
+                {% for s in sanbays %}
+                <option value="{{ s.ten_San_bay }}">{{ s.ten_San_bay }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="info-sanbay">
+            <lable class="laplich__lb">Sân bay đến: </lable>
+            <select class="input" name="sanbayden">
+                {% for s in sanbays %}
+                <option value="{{ s.ten_San_bay }}">{{ s.ten_San_bay }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="info-thoigiankhoihanh">
+            <label class="laplich__lb">Thời gian khởi hành:</label>
+            <input required class="input" type="datetime-local" name="datetime" />
+        </div>
+        <div class="info-tg_bay">
+            <label class="laplich__lb">Thời gian bay: </label>
+            <input required type="number" class="number" min="0" max="24" value="0" name="hours"> <span class="laplich_span"> Tiếng </span>
+            <input required type="number" class="number" min="0" max="59" value="30" name="minutes"> <span class="laplich_span"> Phút</span>
+        </div>
+    </div>
+
+    <div class="info-giave">
+        <div class="giave">
+            <lable class="laplich__lb">Giá vé hạng 1:</lable>
+            <input required class="input" type="text" name="price_1" />
+        </div>
+        <div class="giave">
+            <lable class="laplich__lb">Giá vé hạng 2:</lable>
+            <input required class="input" type="text" name="price_2" />
+        </div>
+    </div>
+
+    <div class="info-sbtg">
+        <div class="info-ctsbtg flex">
+            <lable class="laplich__lb">Sân bay trung gian 1:</lable>
+            <select class="input" name="sanbaytg1" style="margin-right:355px">
+                <option value="None">Không có</option>
+                {% for s in sanbays %}
+                <option value="{{ s.ten_San_bay }}">{{ s.ten_San_bay }}</option>
+                {% endfor %}
+            </select>
+            <div class="tg-dung">
+                <label class="laplich__lb" >Thời gian dừng: </label>
+                <input type="number" class="number" max="30" value="0" name="time_stop_1"> <span> Phút</span>
+            </div>
+            <div class="note">
+                <label class="laplich__lb" >ghi chú (nếu có): </label>
+                <input type="text" class="ghichu" name="ghichu1">
+            </div>
+        </div>
+        <div class="info-ctsbtg flex">
+            <lable class="laplich__lb">Sân bay trung gian 2:</lable>
+            <select class="input" name="sanbaytg2" style="margin-right:355px">
+                <option value="None">Không có</option>
+                {% for s in sanbays %}
+                <option title="{{ s.ten_San_bay }}">{{ s.ten_San_bay }}</option>
+                {% endfor %}
+            </select>
+            <div class="tg-dung">
+                <label class="laplich__lb">Thời gian dừng: </label>
+            <input type="number" class="number" max="30" value="0" name="time_stop_2"> <span> Phút</span>
+            </div>
+            <div class="note">
+                <label class="laplich__lb"  >ghi chú (nếu có): </label>
+                <input type="text" class="ghichu" name="ghichu2">
+            </div>
+        </div>
+        <div class="group-btn">
+            <input onclick="luulich_success('Bạn muốn tạo chuyến bay?')" type="submit" value="Lập Lich" class="btn btn-primary button">
+            <button class="btn btn-outline-primary button">Hủy</button>
+        </div>
+    </div>
+</form>
+{% endblock %}

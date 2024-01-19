@@ -1,0 +1,42 @@
+{% extends 'layout/base.html' %}
+{% block content %}
+{% for e in err %}
+<div class="alert alert-danger">
+    <h3>{{ e }}</h3>
+</div>
+{% endfor %}
+<form action="{{ url_for('check_tracuu') }}" class="form_tracuu" method="get">
+
+    <h1 class="title">Tra cứu chuyến bay</h1>
+    <div class="form__body">
+        <div class="form__info_sanbay">
+            <div class="tracuu__sanbay">
+                <label>Sân bay đi:</label>
+                <select class="input" tyle="text-align:center" name="sanbay1">
+                    {% for sanbay in sanbays %}
+                    <option value="{{ sanbay.ten_San_bay }}" style="text-align:left">{{ sanbay.ten_San_bay }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <i class="fa-solid fa-right-long from-to "></i>
+            <div class="tracuu__sanbayden">
+                <label>Sân bay đến:</label>
+                <select class="input" name="sanbay2">
+                    {% for sanbay in sanbays %}
+                    <option value="{{ sanbay.ten_San_bay }}" style="text-align:left">{{ sanbay.ten_San_bay }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <div class="tracuu__time">
+            <label>
+                Thời gian
+            </label>
+            <input required type="date" class="input" name="date">
+        </div>
+        <div class="btn-search">
+            <input type="submit" value="Tìm chuyến bay" class="btn btn-primary">
+        </div>
+    </div>
+</form>
+{% endblock %}

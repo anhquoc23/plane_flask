@@ -1,0 +1,101 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+<h1 class="text-center text-info" style="margin:50px 0">Trang Bán Vé</h1>
+
+<form action="/banve.html" class="form_banve" METHOD="GET">
+    <div class="groupbox_info-datve">
+        <fieldset class="info-datve">
+            <h1 class="title-gb">Thông tin chuyến bay</h1>
+            <div class="datve-tuyenbay">
+                <label for="" class="lb-title">Chuyến bay: </label>
+                <label for="" class="lb-content">Hà Nội - TP-HCM</label>
+            </div>
+            <div class="datve-sanbay">
+                <div class="datve-sanbaydi">
+                    <label class="lb-title">Sân bay đến: </label>
+                    <label class="lb-content">Tân Sơn Nhất</label>
+                </div>
+                <div class="datve-sanbayden">
+                    <label class="lb-title">Sân bay đi: </label>
+                    <label class="lb-content">Nội Bài</label>
+                </div>
+            </div>
+            <div class="datve-sanbaytg">
+                <div class="datve-sanbaytg--name">
+                    <label class="lb-title">Sân bay trung gian 1: </label>
+                    <label class="lb-content">Sao Vàng</label>
+                </div>
+                <div class="datve-sanbaytg--time">
+                    <label class="lb-title">Thời gian dừng: </label>
+                    <label class="lb-content">25<span> phút</span></label>
+                </div>
+            </div>
+            <div class="datve-sanbaytg">
+                <div class="datve-sanbaytg--name">
+                    <label class="lb-title">Sân bay trung gian 2: </label>
+                    <label class="lb-content">Hải Phòng</label>
+                </div>
+                <div class="datve-sanbaytg--time">
+                    <label class="lb-title">Thời gian dừng: </label>
+                    <label class="lb-content">29<span> phút</span></label>
+                </div>
+            </div>
+            <div class="datve-datetime">
+                <div class="datve-datetime--flight">
+                    <label class="lb-title">Ngày giờ bay: </label>
+                    <label class="lb-content">16/01/2023 10:45 <span>AM</span></label>
+                </div>
+                <div class="datve-datetime-time">
+                    <label class="lb-title">Thời gian bay: </label>
+                    <label class="lb-content">10 <span>tiếng</span> 25 <span> phút</span></label>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+    <div class="form-chon_ghe">
+        <div class="form-chon-ghe__hang_ghe">
+            <label class="hangve laplich__lb">Chọn hạng vé: </label>
+            <select class="chon_hang_ve input">
+                {% for h in hangves %}
+                <option>Hạng {{ h.id }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-chon-ghe__price">
+            <label class="lb-title">Giá vé: </label>
+            <label class="lb-price">1.500.000 VNĐ</label>
+        </div>
+         <div class="form-chon-ghe__so_ghe">
+            <label class="soghe laplich__lb">Chọn số ghế:</label>
+            <select name="hangve" class="chon_hang_ve input">
+                {% for chair in chairs %}
+                <option value="{{ chair.id }}">{{ chair.id }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="form-info_customer">
+        <h1 class="message">Thông tin khách hàng</h1>
+        <div class="input-lable">
+            <div class="customer">
+                <lable class="lb-info laplich__lb">Họ tên hành khách: </lable>
+                <input class="text" type="text" />
+            </div>
+            <div class="customer">
+                <lable class="lb-info laplich__lb">Số điện thoại: </lable>
+                <input type="text" />
+            </div>
+            <div class="customer">
+                <lable class="lb-info laplich__lb">CMND/CCCD: </lable>
+                <input type="text" />
+            </div>
+        </div>
+    </div>
+
+    <div class="btn">
+        <input type="submit" value="Xuất vé" class="btn btn-primary button btn-datve" />
+        <button type="button" class="btn btn-danger button btn-datve">Hủy</button>
+    </div>
+</form>
+{% endblock %}

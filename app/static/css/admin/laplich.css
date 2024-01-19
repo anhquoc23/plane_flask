@@ -1,0 +1,57 @@
+.laplich
+{
+     font-size: 20px;
+}
+
+.body-laplich
+{
+     border-width: 1px;
+     width: 100%;
+     padding-left: 10px;
+     padding-top: 10px;
+     padding-right: 10px;
+     padding-bottom: 10px;
+     margin: 0 auto;
+}
+
+.info-sanbay
+{
+     margin-bottom: 50px;
+}
+
+.laplich__lb
+{
+     display: inline-block;
+     min-width: 215px;
+}
+
+.laplich_span
+{
+     display: inline-block;
+     margin: 0 3px;
+     font-size: 16px;
+}
+
+.info-sbtg
+{
+     margin-top: 50px;
+     margin-bottom: 50px;
+}
+
+.info-ctsbtg
+{
+     margin-top: 50px;
+     margin-bottom: 50px;
+}
+
+.note
+{
+    margin: 40px 0 0;
+    width: 100%;
+    display: flex;
+}
+
+.ghichu
+{
+    width: 100%;
+}

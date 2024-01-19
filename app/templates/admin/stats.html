@@ -1,0 +1,71 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+        let lables = []
+        let data = []
+        {% for s in stats %}
+            lables.push('{{ s[0] }}')
+            data.push({{ s[1] }})
+        {% endfor %}
+        window.onload = function()
+        {
+            const ctx = document.getElementById('stats__chartjs').getContext('2d')
+            const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+              labels: lables,
+              datasets: [{
+                label: 'Thống kê doanh thu chuyến bay theo từng tháng',
+                data: data,
+                borderWidth: 1,
+                backgroundColor: ['rgb(255,0,0)',
+                                  'rgb(0,155,255)',
+                                  'rgb(0,0,255)',
+                                  'rgb(248 248 255)',
+                                  'rgb(220 220 220)',
+                                  'rgb(0,128,0)',
+                                  'rgb(0,128,128)']
+              }]
+            },
+            options: {
+              scales: {
+                y: {
+                  beginAtZero: true
+                }
+              }
+            }
+          });
+        }
+
+
+</script>
+<h1 class="text-center text-info">Trang thong ke bao cao</h1>
+
+<!-- Tab content -->
+<form class="stat-datetime">
+        <lable>Nhập tháng và năm cần xem:</lable>
+        <input required class="input" type="month" name="__stat__">
+        <input class="btn btn-success button btn-datve" type="submit" value="Xem">
+    </form>
+    <table class="table">
+        <tr>
+            <th>Tên chuyến Bay</th>
+            <th>Doanh Thu</th>
+        </tr>
+        {% for s in stats %}
+        <tr>
+            <td>{{s[0]}}</td>
+            <td>{{ "{:,.1f}".format(s[1]) }} &#8363</td>
+            <td>{{s[2]}}</td>
+        </tr>
+        {%endfor%}
+    </table>
+
+<div class="chart">
+    <canvas id="stats__chartjs"></canvas>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'admin/master.html' %}
+
+{% block body %}
+<h1 class="text-center text-info" style="margin:50px 0">Danh sách lịch trình</h1>
+<form>
+    <input type="date" required name="date" />
+    <input class="btn btn-primary" type="submit" value="Lọc" >
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <td>Tên chuyến bay</td>
+            <td>Ngày Xuất Phát</td>
+            <td>Giá Vé</td>
+            <td>Tên Khách Hàng</td>
+            <td>Hạng Vé</td>
+            <td>Số Ghế</td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ticket in tickets %}
+        <tr>
+            <td>{{ticket.ten_chuyen_bay}}</td>
+            <td>{{ticket.ngay_xuat_ve}}</td>
+            <td>{{ "{:,.1f}".format(ticket.GiaVe) }} &#8363</td>
+            <td>{{ticket.khach_hang}}</td>
+            <td>{{ticket.hang}}</td>
+            <td>{{ticket.chair}}</td>
+        </tr>
+        {%endfor%}
+    </tbody>
+</table>
+{% endblock %}

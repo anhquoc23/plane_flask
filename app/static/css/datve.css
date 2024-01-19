@@ -1,0 +1,132 @@
+.form_datve
+{
+     font-size: 20px;
+     width: 80%;
+     margin: 0 auto;
+}
+
+.form_banve
+{
+     font-size: 20px;
+     margin: 0 auto;
+}
+
+.groupbox_info-datve
+{
+     width: 100%;
+     margin: auto;
+     padding: 10px;
+}
+.title-gb
+{
+     font-weight: 900;
+     font-size: 28px;
+     position: relative;
+     top: -23px;
+     width: 100%;
+     display: inline !important;
+     background-color: white;
+}
+
+.info-datve
+{
+     border-style: groove;
+     border-color: #000;
+     border-width: 2px;
+     font-size: 20px;
+     padding: 0 30px 30px 30px;
+}
+
+.lb-title
+{
+     padding: 10px 50px 10px 10px
+}
+
+.datve-sanbay, .datve-sanbaytg, .datve-datetime
+{
+     display: flex;
+     justify-content: space-between;
+}
+
+.form-chon_ghe
+{
+     margin: auto;
+     padding: 30px;
+     font-size: 20px;
+}
+
+.form-chon-ghe__hang_ghe
+{
+     display: inline-block;
+     float: left;
+}
+
+.form-chon-ghe__price
+{
+     text-align: right;
+}
+
+.hangve, .soghe
+{
+     padding-right: 50px;
+}
+
+.chon_hang_ve
+{
+     text-align: left;
+}
+
+.lb-price
+{
+     color: red;
+}
+
+.message
+{
+     text-align: center;
+     font-weight: bolder;
+     font-size: 20px;
+     margin-bottom: 30px;
+}
+
+.form-info_customer
+{
+     margin: auto;
+     padding: 30px;
+     font-size: 20px;
+}
+
+.input-lable
+{
+     display: flex;
+     flex-wrap: wrap;
+     justify-content: space-between;
+}
+
+.customer
+{
+     margin-bottom: 30px;
+}
+
+.lb-info
+{
+     margin-right: 30px;
+     display: inline-block;
+     min-width: 170px;
+}
+
+div.btn
+{
+     display: flex;
+     justify-content: space-around;
+}
+
+.btn-datve
+{
+     margin: 10px;
+     width: 100px;
+}
+.disable{
+    outline: none;
+    border: none;
+}

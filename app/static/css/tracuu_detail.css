@@ -1,0 +1,30 @@
+.table
+{
+    width:95%;
+    margin: 0 auto;
+}
+tbody
+{
+    font-size: 1.3rem;
+}
+h5
+{
+    font-weight:300;
+}
+
+.line-2
+{
+    margin: 18px 0px 20px 0;
+}
+
+a.datve
+{
+    margin-top:45px;
+    text-align:center;
+    padding:3px;
+}
+
+.chuyenbay
+{
+    border: 1px solid lightblue;
+}
